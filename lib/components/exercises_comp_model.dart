@@ -1,12 +1,12 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'history_empty_widget.dart' show HistoryEmptyWidget;
+import 'exercises_comp_widget.dart' show ExercisesCompWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class HistoryEmptyModel extends FlutterFlowModel<HistoryEmptyWidget> {
+class ExercisesCompModel extends FlutterFlowModel<ExercisesCompWidget> {
   @override
   void initState(BuildContext context) {}
 
