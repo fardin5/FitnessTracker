@@ -3,7 +3,10 @@ import '/backend/backend.dart';
 import '/components/history_empty_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'history_model.dart';
 export 'history_model.dart';
 
@@ -47,7 +50,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Page Title',
+            'History',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
@@ -55,7 +58,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -86,7 +89,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                   List<WorkoutsRecord> listViewWorkoutsRecordList =
                       snapshot.data!;
                   if (listViewWorkoutsRecordList.isEmpty) {
-                    return const HistoryEmptyWidget();
+                    return HistoryEmptyWidget();
                   }
                   return ListView.builder(
                     padding: EdgeInsets.zero,
@@ -97,9 +100,9 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       final listViewWorkoutsRecord =
                           listViewWorkoutsRecordList[listViewIndex];
                       return Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +110,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                             children: [
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     listViewWorkoutsRecord.name,
                                     style: FlutterFlowTheme.of(context)
@@ -132,7 +135,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     dateTimeFormat('yMMMd',
                                         listViewWorkoutsRecord.timestamp!),
@@ -152,6 +155,14 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                     },
                   );
                 },
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: wrapWithModel(
+                  model: _model.historyEmptyModel,
+                  updateCallback: () => setState(() {}),
+                  child: HistoryEmptyWidget(),
+                ),
               ),
             ],
           ),
