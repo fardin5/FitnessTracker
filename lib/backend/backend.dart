@@ -297,7 +297,7 @@ Future<FFFirestorePage<T>> queryCollectionPage<T>(
   } else {
     docSnapshot = await query.get();
   }
-  final getDocs = (QuerySnapshot s) => s.docs
+  getDocs(QuerySnapshot s) => s.docs
       .map(
         (d) => safeGet(
           () => recordBuilder(d),

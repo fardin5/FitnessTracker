@@ -5,9 +5,10 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class FitnessTrackerFirebaseUser extends BaseAuthUser {
-  FitnessTrackerFirebaseUser(this.user);
+class WorkoutAppFirebaseUser extends BaseAuthUser {
+  WorkoutAppFirebaseUser(this.user);
   User? user;
+  @override
   bool get loggedIn => user != null;
 
   @override
@@ -54,17 +55,17 @@ class FitnessTrackerFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      FitnessTrackerFirebaseUser(user);
+      WorkoutAppFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> fitnessTrackerFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> workoutAppFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = FitnessTrackerFirebaseUser(user);
+        currentUser = WorkoutAppFirebaseUser(user);
         return currentUser!;
       },
     );

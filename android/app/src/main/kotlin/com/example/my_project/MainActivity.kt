@@ -1,4 +1,4 @@
-package com.mycompany.fitnesstracker
+package com.mycompany.workoutapp
 
 import io.flutter.embedding.android.FlutterActivity
 
