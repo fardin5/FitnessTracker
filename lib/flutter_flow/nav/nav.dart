@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -12,10 +10,7 @@ import '/auth/base_auth_user_provider.dart';
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -80,58 +75,58 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const LoginWidget(),
         ),
         FFRoute(
           name: 'login',
           path: '/login',
-          builder: (context, params) => LoginWidget(),
+          builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
+          name: 'homepage',
+          path: '/homepage',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'HomePage')
-              : HomePageWidget(),
+              ? const NavBarPage(initialPage: 'homepage')
+              : const HomepageWidget(),
         ),
         FFRoute(
-          name: 'History',
+          name: 'history',
           path: '/history',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'History')
-              : HistoryWidget(),
+              ? const NavBarPage(initialPage: 'history')
+              : const HistoryWidget(),
         ),
         FFRoute(
-          name: 'Settings',
-          path: '/settings',
+          name: 'profile',
+          path: '/profile',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Settings')
-              : SettingsWidget(),
+              ? const NavBarPage(initialPage: 'profile')
+              : const ProfileWidget(),
         ),
         FFRoute(
-          name: 'starworkout',
-          path: '/starworkout',
+          name: 'startworkout',
+          path: '/startworkout',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'starworkout')
-              : StarworkoutWidget(),
+              ? const NavBarPage(initialPage: 'startworkout')
+              : const StartworkoutWidget(),
         ),
         FFRoute(
           name: 'test',
           path: '/test',
-          builder: (context, params) => TestWidget(),
+          builder: (context, params) => const TestWidget(),
         ),
         FFRoute(
           name: 'exercises',
           path: '/exercises',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'exercises')
-              : ExercisesWidget(),
+              ? const NavBarPage(initialPage: 'exercises')
+              : const ExercisesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -371,7 +366,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

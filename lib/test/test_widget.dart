@@ -1,10 +1,7 @@
 import '/components/start_workout_comp_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'test_model.dart';
 export 'test_model.dart';
 
@@ -24,8 +21,6 @@ class _TestWidgetState extends State<TestWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TestModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -56,7 +51,7 @@ class _TestWidgetState extends State<TestWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -65,7 +60,7 @@ class _TestWidgetState extends State<TestWidget> {
           child: wrapWithModel(
             model: _model.startWorkoutCompModel,
             updateCallback: () => setState(() {}),
-            child: StartWorkoutCompWidget(),
+            child: const StartWorkoutCompWidget(),
           ),
         ),
       ),
