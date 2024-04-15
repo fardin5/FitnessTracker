@@ -66,7 +66,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: FlutterFlowTheme.of(context).primary,
+              backgroundColor: FlutterFlowTheme.of(context).tertiary,
               automaticallyImplyLeading: false,
               title: Text(
                 'Dashboard',

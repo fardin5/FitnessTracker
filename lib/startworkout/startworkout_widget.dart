@@ -42,7 +42,7 @@ class _StartworkoutWidgetState extends State<StartworkoutWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           title: Text(
             'Start Workout',
@@ -165,7 +165,7 @@ class _StartworkoutWidgetState extends State<StartworkoutWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              'Templates',
+                              'Splits',
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
@@ -182,7 +182,7 @@ class _StartworkoutWidgetState extends State<StartworkoutWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                'Example Templates',
+                                'Example Splits',
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
