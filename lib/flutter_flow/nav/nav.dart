@@ -103,11 +103,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const HistoryWidget(),
         ),
         FFRoute(
-          name: 'profile',
-          path: '/profile',
+          name: 'Settings',
+          path: '/settings',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'profile')
-              : const ProfileWidget(),
+              ? const NavBarPage(initialPage: 'Settings')
+              : const SettingsWidget(),
         ),
         FFRoute(
           name: 'startworkout',
@@ -115,11 +115,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'startworkout')
               : const StartworkoutWidget(),
-        ),
-        FFRoute(
-          name: 'test',
-          path: '/test',
-          builder: (context, params) => const TestWidget(),
         ),
         FFRoute(
           name: 'exercises',

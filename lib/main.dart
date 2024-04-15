@@ -9,6 +9,8 @@ import 'auth/firebase_auth/auth_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'index.dart';
 
 void main() async {
@@ -54,7 +56,7 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = workoutAppFirebaseUserStream()
+    userStream = fitnessTrackersFirebaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
@@ -78,7 +80,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'workout-app',
+      title: 'FitnessTrackers',
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -128,64 +130,54 @@ class _NavBarPageState extends State<NavBarPage> {
       'history': const HistoryWidget(),
       'startworkout': const StartworkoutWidget(),
       'exercises': const ExercisesWidget(),
-      'profile': const ProfileWidget(),
+      'Settings': const SettingsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
     return Scaffold(
       body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => setState(() {
+      bottomNavigationBar: GNav(
+        selectedIndex: currentIndex,
+        onTabChange: (i) => setState(() {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.of(context).primary,
-        unselectedItemColor: const Color(0x8A000000),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24.0,
-            ),
-            label: 'Home',
-            tooltip: '',
+        backgroundColor: FlutterFlowTheme.of(context).primaryText,
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        activeColor: FlutterFlowTheme.of(context).secondary,
+        tabBackgroundColor: const Color(0x00000000),
+        tabBorderRadius: 100.0,
+        tabMargin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        gap: 0.0,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        duration: const Duration(milliseconds: 500),
+        haptic: false,
+        tabs: const [
+          GButton(
+            icon: Icons.home_outlined,
+            text: 'Home',
+            iconSize: 24.0,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.history,
-              size: 24.0,
-            ),
-            label: 'Home',
-            tooltip: '',
+          GButton(
+            icon: Icons.history,
+            text: 'Home',
+            iconSize: 24.0,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.start,
-              size: 24.0,
-            ),
-            label: 'Home',
-            tooltip: '',
+          GButton(
+            icon: Icons.start,
+            text: 'Home',
+            iconSize: 24.0,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.extension_rounded,
-              size: 24.0,
-            ),
-            label: 'Home',
-            tooltip: '',
+          GButton(
+            icon: FontAwesomeIcons.dumbbell,
+            text: 'Home',
+            iconSize: 24.0,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 24.0,
-            ),
-            label: '',
-            tooltip: '',
+          GButton(
+            icon: Icons.person,
+            text: '',
+            iconSize: 24.0,
           )
         ],
       ),

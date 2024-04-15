@@ -133,7 +133,7 @@ class _LoginWidgetState extends State<LoginWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).secondary,
         body: SafeArea(
           top: true,
           child: Column(
@@ -142,7 +142,7 @@ class _LoginWidgetState extends State<LoginWidget>
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 16.0),
                 child: Text(
-                  'brand.ai',
+                  'FitnessTracker',
                   style: FlutterFlowTheme.of(context).displaySmall.override(
                         fontFamily: 'Plus Jakarta Sans',
                         color: const Color(0xFF101213),
@@ -216,7 +216,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 24.0),
                                             child: Text(
-                                              'Let\'s get started by filling out the form below.',
+                                              'Start your Journey now',
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -671,35 +671,21 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 color: Colors.white,
                                               ),
                                             ),
-                                          Text(
-                                            'Welcome Back',
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium
-                                                .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
-                                                  color: const Color(0xFF101213),
-                                                  fontSize: 24.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
                                           Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 4.0, 0.0, 24.0),
+                                                    0.0, 0.0, 0.0, 5.0),
                                             child: Text(
-                                              'Fill out the information below in order to access your account.',
+                                              'Welcome Back',
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
-                                                  .labelMedium
+                                                  .headlineMedium
                                                   .override(
                                                     fontFamily:
                                                         'Plus Jakarta Sans',
-                                                    color: const Color(0xFF57636C),
-                                                    fontSize: 14.0,
+                                                    color: const Color(0xFF101213),
+                                                    fontSize: 24.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -983,65 +969,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           40.0),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 16.0),
-                                              child: FFButtonWidget(
-                                                onPressed: () async {
-                                                  GoRouter.of(context)
-                                                      .prepareAuthEvent();
-                                                  final user = await authManager
-                                                      .signInWithGoogle(
-                                                          context);
-                                                  if (user == null) {
-                                                    return;
-                                                  }
-
-                                                  context.goNamedAuth(
-                                                      'homepage',
-                                                      context.mounted);
-                                                },
-                                                text: 'Forgot Password?',
-                                                options: FFButtonOptions(
-                                                  height: 44.0,
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          32.0, 0.0, 32.0, 0.0),
-                                                  iconPadding:
-                                                      const EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: Colors.white,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
-                                                        color:
-                                                            const Color(0xFF101213),
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                  elevation: 0.0,
-                                                  borderSide: const BorderSide(
-                                                    color: Colors.white,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          40.0),
-                                                  hoverColor: const Color(0xFFF1F4F8),
                                                 ),
                                               ),
                                             ),
