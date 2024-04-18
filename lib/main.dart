@@ -10,11 +10,12 @@ import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
   await initFirebase();
 
@@ -127,57 +128,133 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'homepage': const HomepageWidget(),
-      'history': const HistoryWidget(),
       'startworkout': const StartworkoutWidget(),
       'exercises': const ExercisesWidget(),
-      'Settings': const SettingsWidget(),
+      'profile': const ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
+    final MediaQueryData queryData = MediaQuery.of(context);
+
     return Scaffold(
-      body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: GNav(
-        selectedIndex: currentIndex,
-        onTabChange: (i) => setState(() {
+      body: MediaQuery(
+          data: queryData
+              .removeViewInsets(removeBottom: true)
+              .removeViewPadding(removeBottom: true),
+          child: _currentPage ?? tabs[_currentPageName]!),
+      extendBody: true,
+      bottomNavigationBar: FloatingNavbar(
+        currentIndex: currentIndex,
+        onTap: (i) => setState(() {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: FlutterFlowTheme.of(context).primaryText,
-        color: FlutterFlowTheme.of(context).primaryBackground,
-        activeColor: FlutterFlowTheme.of(context).secondary,
-        tabBackgroundColor: const Color(0x00000000),
-        tabBorderRadius: 100.0,
-        tabMargin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        selectedItemColor: FlutterFlowTheme.of(context).primaryText,
+        unselectedItemColor: const Color(0x8A000000),
+        selectedBackgroundColor: const Color(0x00000000),
+        borderRadius: 8.0,
+        itemBorderRadius: 8.0,
+        margin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-        gap: 0.0,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        duration: const Duration(milliseconds: 500),
-        haptic: false,
-        tabs: const [
-          GButton(
-            icon: Icons.home_outlined,
-            text: 'Home',
-            iconSize: 24.0,
+        width: double.infinity,
+        elevation: 0.0,
+        items: [
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.history_sharp,
+                  color: currentIndex == 0
+                      ? FlutterFlowTheme.of(context).primaryText
+                      : const Color(0x8A000000),
+                  size: 24.0,
+                ),
+                Text(
+                  'History',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 0
+                        ? FlutterFlowTheme.of(context).primaryText
+                        : const Color(0x8A000000),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
           ),
-          GButton(
-            icon: Icons.history,
-            text: 'Home',
-            iconSize: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FontAwesomeIcons.dumbbell,
+                  color: currentIndex == 1
+                      ? FlutterFlowTheme.of(context).primaryText
+                      : const Color(0x8A000000),
+                  size: 24.0,
+                ),
+                Text(
+                  'Start',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 1
+                        ? FlutterFlowTheme.of(context).primaryText
+                        : const Color(0x8A000000),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
           ),
-          GButton(
-            icon: Icons.start,
-            text: 'Home',
-            iconSize: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FontAwesomeIcons.skating,
+                  color: currentIndex == 2
+                      ? FlutterFlowTheme.of(context).primaryText
+                      : const Color(0x8A000000),
+                  size: 24.0,
+                ),
+                Text(
+                  'Exercises',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 2
+                        ? FlutterFlowTheme.of(context).primaryText
+                        : const Color(0x8A000000),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
           ),
-          GButton(
-            icon: FontAwesomeIcons.dumbbell,
-            text: 'Home',
-            iconSize: 24.0,
-          ),
-          GButton(
-            icon: Icons.person,
-            text: '',
-            iconSize: 24.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.settings_sharp,
+                  color: currentIndex == 3
+                      ? FlutterFlowTheme.of(context).primaryText
+                      : const Color(0x8A000000),
+                  size: 24.0,
+                ),
+                Text(
+                  'settings',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 3
+                        ? FlutterFlowTheme.of(context).primaryText
+                        : const Color(0x8A000000),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),

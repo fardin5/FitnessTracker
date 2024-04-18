@@ -11,8 +11,9 @@ class StartWorkoutCompModel extends FlutterFlowModel<StartWorkoutCompWidget> {
 
   // State field(s) for inputWorkoutName widget.
   FocusNode? inputWorkoutNameFocusNode;
-  TextEditingController? inputWorkoutNameController;
-  String? Function(BuildContext, String?)? inputWorkoutNameControllerValidator;
+  TextEditingController? inputWorkoutNameTextController;
+  String? Function(BuildContext, String?)?
+      inputWorkoutNameTextControllerValidator;
   // State field(s) for Timer widget.
   int timerMilliseconds = 0;
   String timerValue = StopWatchTimer.getDisplayTime(
@@ -37,7 +38,7 @@ class StartWorkoutCompModel extends FlutterFlowModel<StartWorkoutCompWidget> {
   @override
   void dispose() {
     inputWorkoutNameFocusNode?.dispose();
-    inputWorkoutNameController?.dispose();
+    inputWorkoutNameTextController?.dispose();
 
     timerController.dispose();
     inputWeightModels.dispose();

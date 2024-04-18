@@ -42,7 +42,7 @@ class _StartWorkoutCompWidgetState extends State<StartWorkoutCompWidget> {
       _model.timerController.onStartTimer();
     });
 
-    _model.inputWorkoutNameController ??= TextEditingController();
+    _model.inputWorkoutNameTextController ??= TextEditingController();
     _model.inputWorkoutNameFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -79,17 +79,17 @@ class _StartWorkoutCompWidgetState extends State<StartWorkoutCompWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                         child: TextFormField(
-                          controller: _model.inputWorkoutNameController,
+                          controller: _model.inputWorkoutNameTextController,
                           focusNode: _model.inputWorkoutNameFocusNode,
                           onChanged: (_) => EasyDebounce.debounce(
-                            '_model.inputWorkoutNameController',
+                            '_model.inputWorkoutNameTextController',
                             const Duration(milliseconds: 2000),
                             () async {
                               setState(() {
                                 FFAppState().updateWorkoutStruct(
                                   (e) => e
-                                    ..name =
-                                        _model.inputWorkoutNameController.text,
+                                    ..name = _model
+                                        .inputWorkoutNameTextController.text,
                                 );
                               });
                             },
@@ -144,7 +144,8 @@ class _StartWorkoutCompWidgetState extends State<StartWorkoutCompWidget> {
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
-                          validator: _model.inputWorkoutNameControllerValidator
+                          validator: _model
+                              .inputWorkoutNameTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
