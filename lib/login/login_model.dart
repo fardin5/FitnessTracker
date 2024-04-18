@@ -12,53 +12,56 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
       tabBarController != null ? tabBarController!.index : 0;
 
   // State field(s) for emailAddress widget.
-  FocusNode? emailAddressFocusNode1;
-  TextEditingController? emailAddressController1;
-  String? Function(BuildContext, String?)? emailAddressController1Validator;
+  FocusNode? emailAddressFocusNode;
+  TextEditingController? emailAddressTextController;
+  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
   // State field(s) for password widget.
-  FocusNode? passwordFocusNode1;
-  TextEditingController? passwordController1;
-  late bool passwordVisibility1;
-  String? Function(BuildContext, String?)? passwordController1Validator;
-  // State field(s) for password2 widget.
-  FocusNode? password2FocusNode;
-  TextEditingController? password2Controller;
-  late bool password2Visibility;
-  String? Function(BuildContext, String?)? password2ControllerValidator;
-  // State field(s) for emailAddress widget.
-  FocusNode? emailAddressFocusNode2;
-  TextEditingController? emailAddressController2;
-  String? Function(BuildContext, String?)? emailAddressController2Validator;
-  // State field(s) for password widget.
-  FocusNode? passwordFocusNode2;
-  TextEditingController? passwordController2;
-  late bool passwordVisibility2;
-  String? Function(BuildContext, String?)? passwordController2Validator;
+  FocusNode? passwordFocusNode;
+  TextEditingController? passwordTextController;
+  late bool passwordVisibility;
+  String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  // State field(s) for emailAddress_Create widget.
+  FocusNode? emailAddressCreateFocusNode;
+  TextEditingController? emailAddressCreateTextController;
+  String? Function(BuildContext, String?)?
+      emailAddressCreateTextControllerValidator;
+  // State field(s) for password_Create widget.
+  FocusNode? passwordCreateFocusNode;
+  TextEditingController? passwordCreateTextController;
+  late bool passwordCreateVisibility;
+  String? Function(BuildContext, String?)?
+      passwordCreateTextControllerValidator;
+  // State field(s) for passwordConfirm widget.
+  FocusNode? passwordConfirmFocusNode;
+  TextEditingController? passwordConfirmTextController;
+  late bool passwordConfirmVisibility;
+  String? Function(BuildContext, String?)?
+      passwordConfirmTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
-    passwordVisibility1 = false;
-    password2Visibility = false;
-    passwordVisibility2 = false;
+    passwordVisibility = false;
+    passwordCreateVisibility = false;
+    passwordConfirmVisibility = false;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();
-    emailAddressFocusNode1?.dispose();
-    emailAddressController1?.dispose();
+    emailAddressFocusNode?.dispose();
+    emailAddressTextController?.dispose();
 
-    passwordFocusNode1?.dispose();
-    passwordController1?.dispose();
+    passwordFocusNode?.dispose();
+    passwordTextController?.dispose();
 
-    password2FocusNode?.dispose();
-    password2Controller?.dispose();
+    emailAddressCreateFocusNode?.dispose();
+    emailAddressCreateTextController?.dispose();
 
-    emailAddressFocusNode2?.dispose();
-    emailAddressController2?.dispose();
+    passwordCreateFocusNode?.dispose();
+    passwordCreateTextController?.dispose();
 
-    passwordFocusNode2?.dispose();
-    passwordController2?.dispose();
+    passwordConfirmFocusNode?.dispose();
+    passwordConfirmTextController?.dispose();
   }
 }
